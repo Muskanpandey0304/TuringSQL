@@ -1,0 +1,10 @@
+# Training on Kaggle/Colab T4 (fp16, no bf16). Versions get pinned after the first successful smoke run
+# and recorded in docs/lab_notes.md.
+transformers>=4.45,<5
+peft
+trl
+bitsandbytes
+accelerate
+datasets
+wandb
+sqlglot>=25

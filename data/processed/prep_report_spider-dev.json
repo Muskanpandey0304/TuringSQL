@@ -1,0 +1,14 @@
+{
+  "dataset": "spider-dev",
+  "schema_args": {
+    "n_sample_rows": 2,
+    "max_value_len": 24
+  },
+  "max_rows": 10000,
+  "databases": 20,
+  "drop_too_many_rows": 2,
+  "kept": 1032,
+  "kept_empty_result": 49,
+  "raw": 1034,
+  "source_zip": "spider_data.zip"
+}

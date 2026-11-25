@@ -1,0 +1,85 @@
+{
+  "config": {
+    "run_id": "E5base_qwen05b_glossary_turingserve_olist-dev",
+    "model": "qwen-coder-0.5b",
+    "engine": "openai",
+    "dataset": "olist-dev",
+    "max_tokens": 256,
+    "concurrency": 4,
+    "n_sample_rows": 2,
+    "use_definitions": true,
+    "notes": "Base 0.5B zero-shot + retrieved glossary definitions (k=3, gate 0.1 or term match), TuringServe CPU",
+    "extra": {
+      "limit": null,
+      "n_examples": 40
+    }
+  },
+  "prompt_version": "v1",
+  "created_utc": "2026-11-24T08:06:59Z",
+  "git_commit": null,
+  "platform": "Windows AMD64 py3.10.11",
+  "ex_strict": {
+    "n": 40,
+    "acc": 0.225,
+    "ci95": [
+      0.1,
+      0.375
+    ]
+  },
+  "ex_relaxed": {
+    "n": 40,
+    "acc": 0.225,
+    "ci95": [
+      0.1,
+      0.375
+    ]
+  },
+  "valid_sql_rate": 0.325,
+  "by_level": {
+    "definition": {
+      "n": 5,
+      "acc": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ]
+    },
+    "easy": {
+      "n": 10,
+      "acc": 0.7,
+      "ci95": [
+        0.4,
+        1.0
+      ]
+    },
+    "hard": {
+      "n": 12,
+      "acc": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ]
+    },
+    "medium": {
+      "n": 13,
+      "acc": 0.1538,
+      "ci95": [
+        0.0,
+        0.3846
+      ]
+    }
+  },
+  "errors": {
+    "exec_error": 25,
+    "too_many_rows": 1,
+    "unsafe": 1
+  },
+  "latency_s": {
+    "mean": 60.904,
+    "p50": 45.686,
+    "p95": 165.605
+  },
+  "wall_s": 630.3,
+  "mean_prompt_tokens": 1752.1,
+  "cached_token_share": 0.9427
+}

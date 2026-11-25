@@ -1,0 +1,63 @@
+{
+  "config": {
+    "run_id": "E0_qwen15b_hf_bird-dev",
+    "model": "Qwen/Qwen2.5-Coder-1.5B-Instruct",
+    "engine": "hf",
+    "dataset": "bird-dev",
+    "max_tokens": 256,
+    "concurrency": 1,
+    "n_sample_rows": 2,
+    "use_definitions": false,
+    "n_shots": 0,
+    "notes": "",
+    "extra": {
+      "limit": 500,
+      "n_examples": 500
+    }
+  },
+  "prompt_version": "v1",
+  "created_utc": "2026-11-25T07:04:57Z",
+  "git_commit": null,
+  "platform": "Linux x86_64 py3.13.16",
+  "ex_strict": {
+    "n": 500,
+    "acc": 0.184,
+    "ci95": [
+      0.15,
+      0.218
+    ]
+  },
+  "ex_relaxed": {
+    "n": 500,
+    "acc": 0.186,
+    "ci95": [
+      0.152,
+      0.22
+    ]
+  },
+  "valid_sql_rate": 0.606,
+  "by_level": {
+    "all": {
+      "n": 500,
+      "acc": 0.184,
+      "ci95": [
+        0.15,
+        0.218
+      ]
+    }
+  },
+  "errors": {
+    "unsafe": 29,
+    "exec_error": 166,
+    "timeout": 1,
+    "too_many_rows": 1
+  },
+  "latency_s": {
+    "mean": 2.191,
+    "p50": 2.135,
+    "p95": 3.925
+  },
+  "wall_s": 1117.6,
+  "mean_prompt_tokens": 1299.9,
+  "cached_token_share": null
+}

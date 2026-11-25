@@ -1,0 +1,108 @@
+{
+ "k": 3,
+ "min_prob": 0.1,
+ "definitions": {
+  "E03": [
+   "Customer: a person, identified by customer_unique_id (not by order)."
+  ],
+  "E04": [],
+  "E07": [
+   "Review score: fact_orders.review_score, one review per order, 1 to 5; NULL when the order has no review.",
+   "Low review: review_score of 1 or 2 (review_score <= 2).",
+   "Order: one row in fact_orders. Items of an order are rows in fact_order_items with the same order_id."
+  ],
+  "E09": [
+   "Order: one row in fact_orders. Items of an order are rows in fact_order_items with the same order_id."
+  ],
+  "E11": [],
+  "E17": [
+   "Order: one row in fact_orders. Items of an order are rows in fact_order_items with the same order_id."
+  ],
+  "E18": [],
+  "E19": [],
+  "E24": [],
+  "E25": [
+   "Active customer in a month: a customer_unique_id with at least one order WHERE is_revenue_order = 1 purchased in that month (fact_orders.purchase_date).",
+   "Delivered order: order_status 'delivered' with a delivery date; column is_delivered = 1. Revenue metrics use is_revenue_order = 1 (fact_orders) or is_revenue_item = 1 (fact_order_items), meaning delivered AND inside the analysis window."
+  ],
+  "M03": [
+   "Delivered order: order_status 'delivered' with a delivery date; column is_delivered = 1. Revenue metrics use is_revenue_order = 1 (fact_orders) or is_revenue_item = 1 (fact_order_items), meaning delivered AND inside the analysis window."
+  ],
+  "M04": [],
+  "M06": [
+   "Repeat customer: a customer_unique_id with two or more orders WHERE is_revenue_order = 1.",
+   "Delivered order: order_status 'delivered' with a delivery date; column is_delivered = 1. Revenue metrics use is_revenue_order = 1 (fact_orders) or is_revenue_item = 1 (fact_order_items), meaning delivered AND inside the analysis window.",
+   "Active customer in a month: a customer_unique_id with at least one order WHERE is_revenue_order = 1 purchased in that month (fact_orders.purchase_date)."
+  ],
+  "M07": [],
+  "M13": [],
+  "M14": [
+   "Active customer in a month: a customer_unique_id with at least one order WHERE is_revenue_order = 1 purchased in that month (fact_orders.purchase_date).",
+   "Late delivery: fact_orders.is_late = 1, the delivered date is later than the estimated delivery date.",
+   "Delivered order: order_status 'delivered' with a delivery date; column is_delivered = 1. Revenue metrics use is_revenue_order = 1 (fact_orders) or is_revenue_item = 1 (fact_order_items), meaning delivered AND inside the analysis window."
+  ],
+  "M16": [
+   "Order: one row in fact_orders. Items of an order are rows in fact_order_items with the same order_id."
+  ],
+  "M18": [
+   "Repeat customer: a customer_unique_id with two or more orders WHERE is_revenue_order = 1.",
+   "Active customer in a month: a customer_unique_id with at least one order WHERE is_revenue_order = 1 purchased in that month (fact_orders.purchase_date)."
+  ],
+  "M20": [],
+  "M24": [],
+  "M25": [],
+  "M31": [],
+  "M32": [],
+  "H02": [
+   "Delivered order: order_status 'delivered' with a delivery date; column is_delivered = 1. Revenue metrics use is_revenue_order = 1 (fact_orders) or is_revenue_item = 1 (fact_order_items), meaning delivered AND inside the analysis window."
+  ],
+  "H05": [
+   "Active customer in a month: a customer_unique_id with at least one order WHERE is_revenue_order = 1 purchased in that month (fact_orders.purchase_date).",
+   "Delivered order: order_status 'delivered' with a delivery date; column is_delivered = 1. Revenue metrics use is_revenue_order = 1 (fact_orders) or is_revenue_item = 1 (fact_order_items), meaning delivered AND inside the analysis window."
+  ],
+  "H09": [
+   "Late rate: late delivered orders divided by delivered orders, i.e. AVG(is_late) over fact_orders WHERE is_revenue_order = 1, usually shown as a percentage.",
+   "Late delivery: fact_orders.is_late = 1, the delivered date is later than the estimated delivery date."
+  ],
+  "H10": [],
+  "H11": [],
+  "H17": [],
+  "H18": [
+   "Active customer in a month: a customer_unique_id with at least one order WHERE is_revenue_order = 1 purchased in that month (fact_orders.purchase_date).",
+   "Delivered order: order_status 'delivered' with a delivery date; column is_delivered = 1. Revenue metrics use is_revenue_order = 1 (fact_orders) or is_revenue_item = 1 (fact_order_items), meaning delivered AND inside the analysis window."
+  ],
+  "H22": [
+   "Order: one row in fact_orders. Items of an order are rows in fact_order_items with the same order_id."
+  ],
+  "H25": [
+   "Repeat customer: a customer_unique_id with two or more orders WHERE is_revenue_order = 1.",
+   "Active customer in a month: a customer_unique_id with at least one order WHERE is_revenue_order = 1 purchased in that month (fact_orders.purchase_date).",
+   "Delivered order: order_status 'delivered' with a delivery date; column is_delivered = 1. Revenue metrics use is_revenue_order = 1 (fact_orders) or is_revenue_item = 1 (fact_order_items), meaning delivered AND inside the analysis window."
+  ],
+  "H26": [
+   "Active customer in a month: a customer_unique_id with at least one order WHERE is_revenue_order = 1 purchased in that month (fact_orders.purchase_date)."
+  ],
+  "H30": [
+   "Analysis window: orders purchased from 2017-01-01 to 2018-08-31. Column in_window = 1 marks orders and items inside it.",
+   "Order: one row in fact_orders. Items of an order are rows in fact_order_items with the same order_id.",
+   "Active customer in a month: a customer_unique_id with at least one order WHERE is_revenue_order = 1 purchased in that month (fact_orders.purchase_date)."
+  ],
+  "H34": [],
+  "D02": [
+   "Repeat rate: repeat customers divided by all customers with at least one order WHERE is_revenue_order = 1, usually shown as a percentage."
+  ],
+  "D09": [
+   "Revenue: SUM(fact_order_items.price) WHERE is_revenue_item = 1 (delivered orders in the analysis window). Freight is not included."
+  ],
+  "D10": [
+   "Late rate: late delivered orders divided by delivered orders, i.e. AVG(is_late) over fact_orders WHERE is_revenue_order = 1, usually shown as a percentage."
+  ],
+  "D14": [
+   "Average order value (AOV): revenue divided by the number of delivered orders, i.e. SUM(price) / COUNT(DISTINCT order_id) over fact_order_items WHERE is_revenue_item = 1.",
+   "Order: one row in fact_orders. Items of an order are rows in fact_order_items with the same order_id."
+  ],
+  "D15": [
+   "Revenue: SUM(fact_order_items.price) WHERE is_revenue_item = 1 (delivered orders in the analysis window). Freight is not included."
+  ]
+ }
+}

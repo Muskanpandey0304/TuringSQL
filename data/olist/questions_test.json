@@ -1,0 +1,562 @@
+[
+ {
+  "id": "E01",
+  "level": "easy",
+  "question": "How many orders are in the data in total?",
+  "gold_sql": "SELECT COUNT(*) FROM fact_orders",
+  "order_matters": false
+ },
+ {
+  "id": "E02",
+  "level": "easy",
+  "question": "How many orders have the status canceled?",
+  "gold_sql": "SELECT COUNT(*) FROM fact_orders WHERE order_status = 'canceled'",
+  "order_matters": false
+ },
+ {
+  "id": "E05",
+  "level": "easy",
+  "question": "How many products are in the toys category?",
+  "gold_sql": "SELECT COUNT(*) FROM dim_product WHERE category = 'toys'",
+  "order_matters": false
+ },
+ {
+  "id": "E06",
+  "level": "easy",
+  "question": "List each order status with the number of orders that have it.",
+  "gold_sql": "SELECT order_status, COUNT(*) FROM fact_orders GROUP BY order_status",
+  "order_matters": false
+ },
+ {
+  "id": "E08",
+  "level": "easy",
+  "question": "How many orders were paid mainly by boleto?",
+  "gold_sql": "SELECT COUNT(*) FROM fact_orders WHERE main_payment_type = 'boleto'",
+  "order_matters": false
+ },
+ {
+  "id": "E10",
+  "level": "easy",
+  "question": "How many customers live in the state of Sao Paulo (SP)?",
+  "gold_sql": "SELECT COUNT(*) FROM dim_customer WHERE state = 'SP'",
+  "order_matters": false
+ },
+ {
+  "id": "E12",
+  "level": "easy",
+  "question": "What is the weight in grams of the heaviest product?",
+  "gold_sql": "SELECT MAX(weight_g) FROM dim_product",
+  "order_matters": false
+ },
+ {
+  "id": "E13",
+  "level": "easy",
+  "question": "How many orders received a 1-star review?",
+  "gold_sql": "SELECT COUNT(*) FROM fact_orders WHERE review_score = 1",
+  "order_matters": false
+ },
+ {
+  "id": "E14",
+  "level": "easy",
+  "question": "How many days in the calendar table are public holidays?",
+  "gold_sql": "SELECT COUNT(*) FROM dim_date WHERE is_holiday = 1",
+  "order_matters": false
+ },
+ {
+  "id": "E15",
+  "level": "easy",
+  "question": "How many different product categories are there?",
+  "gold_sql": "SELECT COUNT(DISTINCT category) FROM dim_product",
+  "order_matters": false
+ },
+ {
+  "id": "E16",
+  "level": "easy",
+  "question": "What is the average number of items per order, counting only orders that contain at least one item?",
+  "gold_sql": "SELECT AVG(n_items) FROM fact_orders WHERE n_items > 0",
+  "order_matters": false
+ },
+ {
+  "id": "E20",
+  "level": "easy",
+  "question": "What is the highest number of payment installments used on any order?",
+  "gold_sql": "SELECT MAX(max_installments) FROM fact_orders",
+  "order_matters": false
+ },
+ {
+  "id": "E21",
+  "level": "easy",
+  "question": "What is the average distance in km between seller and customer across all order items?",
+  "gold_sql": "SELECT AVG(distance_km) FROM fact_order_items",
+  "order_matters": false
+ },
+ {
+  "id": "E22",
+  "level": "easy",
+  "question": "How many order items cost more than 1,000 reais?",
+  "gold_sql": "SELECT COUNT(*) FROM fact_order_items WHERE price > 1000",
+  "order_matters": false
+ },
+ {
+  "id": "E23",
+  "level": "easy",
+  "question": "How many shoppers come from the North region?",
+  "gold_sql": "SELECT COUNT(*) FROM dim_customer WHERE region = 'North'",
+  "order_matters": false
+ },
+ {
+  "id": "E26",
+  "level": "easy",
+  "question": "What is the lowest price ever charged for an item?",
+  "gold_sql": "SELECT MIN(price) FROM fact_order_items",
+  "order_matters": false
+ },
+ {
+  "id": "E27",
+  "level": "easy",
+  "question": "How many products have more than 5 photos?",
+  "gold_sql": "SELECT COUNT(*) FROM dim_product WHERE photos_qty > 5",
+  "order_matters": false
+ },
+ {
+  "id": "E28",
+  "level": "easy",
+  "question": "Which customer state has the highest household income per person?",
+  "gold_sql": "SELECT state FROM dim_customer GROUP BY state ORDER BY MAX(state_income_pc) DESC LIMIT 1",
+  "order_matters": false
+ },
+ {
+  "id": "E29",
+  "level": "easy",
+  "question": "How many orders were placed in 2017?",
+  "gold_sql": "SELECT COUNT(*) FROM fact_orders WHERE strftime('%Y', purchase_date) = '2017'",
+  "order_matters": false
+ },
+ {
+  "id": "E30",
+  "level": "easy",
+  "question": "How many orders are marked as delivered late?",
+  "gold_sql": "SELECT COUNT(*) FROM fact_orders WHERE is_late = 1",
+  "order_matters": false
+ },
+ {
+  "id": "M01",
+  "level": "medium",
+  "question": "Which 5 customer states placed the most orders? Show each state and its number of orders, most first.",
+  "gold_sql": "SELECT customer_state, COUNT(*) AS orders FROM fact_orders GROUP BY customer_state ORDER BY orders DESC LIMIT 5",
+  "order_matters": true
+ },
+ {
+  "id": "M02",
+  "level": "medium",
+  "question": "What is the average review score for each main payment type, highest first? Only count orders that have a review, and ignore orders with no payment type.",
+  "gold_sql": "SELECT main_payment_type, AVG(review_score) AS avg_review FROM fact_orders WHERE review_score IS NOT NULL AND main_payment_type IS NOT NULL GROUP BY main_payment_type ORDER BY avg_review DESC",
+  "order_matters": true
+ },
+ {
+  "id": "M05",
+  "level": "medium",
+  "question": "What is the average delivery time in days for delivered orders in each customer region?",
+  "gold_sql": "SELECT c.region, AVG(o.delivery_days) FROM fact_orders o JOIN dim_customer c ON c.customer_unique_id = o.customer_unique_id WHERE o.is_delivered = 1 GROUP BY c.region",
+  "order_matters": false
+ },
+ {
+  "id": "M08",
+  "level": "medium",
+  "question": "What is the average freight value per item for customers in each region?",
+  "gold_sql": "SELECT c.region, AVG(i.freight_value) FROM fact_order_items i JOIN dim_customer c ON c.customer_unique_id = i.customer_unique_id GROUP BY c.region",
+  "order_matters": false
+ },
+ {
+  "id": "M09",
+  "level": "medium",
+  "question": "How many orders were placed in each month of 2018? Show the month as YYYY-MM and the count, in month order.",
+  "gold_sql": "SELECT strftime('%Y-%m', purchase_date) AS month, COUNT(*) FROM fact_orders WHERE strftime('%Y', purchase_date) = '2018' GROUP BY month ORDER BY month",
+  "order_matters": true
+ },
+ {
+  "id": "M10",
+  "level": "medium",
+  "question": "How many orders were placed on weekends and how many on weekdays? Show the weekend flag (1 = weekend, 0 = weekday) and the count.",
+  "gold_sql": "SELECT d.is_weekend, COUNT(*) FROM fact_orders o JOIN dim_date d ON d.date = o.purchase_date GROUP BY d.is_weekend",
+  "order_matters": false
+ },
+ {
+  "id": "M11",
+  "level": "medium",
+  "question": "What is the average review score of orders placed on public holidays compared with orders placed on other days? Show the holiday flag (1 = holiday, 0 = other day) and the average.",
+  "gold_sql": "SELECT d.is_holiday, AVG(o.review_score) FROM fact_orders o JOIN dim_date d ON d.date = o.purchase_date GROUP BY d.is_holiday",
+  "order_matters": false
+ },
+ {
+  "id": "M12",
+  "level": "medium",
+  "question": "Among categories with at least 100 items sold, which 5 have the highest average item price? Show the category and the average price.",
+  "gold_sql": "SELECT p.category, AVG(i.price) AS avg_price FROM fact_order_items i JOIN dim_product p ON p.product_id = i.product_id GROUP BY p.category HAVING COUNT(*) >= 100 ORDER BY avg_price DESC LIMIT 5",
+  "order_matters": false
+ },
+ {
+  "id": "M15",
+  "level": "medium",
+  "question": "For each seller state, how many distinct customers have bought from sellers in that state?",
+  "gold_sql": "SELECT s.state, COUNT(DISTINCT i.customer_unique_id) FROM fact_order_items i JOIN dim_seller s ON s.seller_id = i.seller_id GROUP BY s.state",
+  "order_matters": false
+ },
+ {
+  "id": "M17",
+  "level": "medium",
+  "question": "Which 5 product categories have the heaviest products on average? Show the category and the average weight in grams.",
+  "gold_sql": "SELECT category, AVG(weight_g) AS avg_w FROM dim_product GROUP BY category ORDER BY avg_w DESC LIMIT 5",
+  "order_matters": false
+ },
+ {
+  "id": "M19",
+  "level": "medium",
+  "question": "What is the average review score of orders with more than one seller compared with orders that have a single seller? Show a flag (1 = more than one seller, 0 = one seller) and the average.",
+  "gold_sql": "SELECT n_sellers > 1 AS multi_seller, AVG(review_score) FROM fact_orders WHERE n_sellers >= 1 GROUP BY multi_seller",
+  "order_matters": false
+ },
+ {
+  "id": "M21",
+  "level": "medium",
+  "question": "What is the average seller-to-customer distance in km for items, by the seller's region?",
+  "gold_sql": "SELECT s.region, AVG(i.distance_km) FROM fact_order_items i JOIN dim_seller s ON s.seller_id = i.seller_id GROUP BY s.region",
+  "order_matters": false
+ },
+ {
+  "id": "M22",
+  "level": "medium",
+  "question": "In which month (YYYY-MM) were the most orders placed, and how many?",
+  "gold_sql": "SELECT strftime('%Y-%m', purchase_date) AS month, COUNT(*) AS orders FROM fact_orders GROUP BY month ORDER BY orders DESC LIMIT 1",
+  "order_matters": false
+ },
+ {
+  "id": "M23",
+  "level": "medium",
+  "question": "How much freight in total did customers in each region pay on delivered orders?",
+  "gold_sql": "SELECT c.region, SUM(o.freight_total) FROM fact_orders o JOIN dim_customer c ON c.customer_unique_id = o.customer_unique_id WHERE o.is_delivered = 1 GROUP BY c.region",
+  "order_matters": false
+ },
+ {
+  "id": "M26",
+  "level": "medium",
+  "question": "For each seller region, how many distinct sellers have sold at least one item?",
+  "gold_sql": "SELECT s.region, COUNT(DISTINCT i.seller_id) FROM fact_order_items i JOIN dim_seller s ON s.seller_id = i.seller_id GROUP BY s.region",
+  "order_matters": false
+ },
+ {
+  "id": "M27",
+  "level": "medium",
+  "question": "For orders with 1 to 5 items, what is the average review score for each number of items?",
+  "gold_sql": "SELECT n_items, AVG(review_score) FROM fact_orders WHERE n_items BETWEEN 1 AND 5 GROUP BY n_items",
+  "order_matters": false
+ },
+ {
+  "id": "M28",
+  "level": "medium",
+  "question": "For delivered orders, what is the average estimated delivery time and the average actual delivery time in days, by customer region?",
+  "gold_sql": "SELECT c.region, AVG(o.estimated_days), AVG(o.delivery_days) FROM fact_orders o JOIN dim_customer c ON c.customer_unique_id = o.customer_unique_id WHERE o.is_delivered = 1 GROUP BY c.region",
+  "order_matters": false
+ },
+ {
+  "id": "M29",
+  "level": "medium",
+  "question": "For each customer region, how many orders got a 5-star review and how many got a 1-star review?",
+  "gold_sql": "SELECT c.region, SUM(o.review_score = 5), SUM(o.review_score = 1) FROM fact_orders o JOIN dim_customer c ON c.customer_unique_id = o.customer_unique_id GROUP BY c.region",
+  "order_matters": false
+ },
+ {
+  "id": "M30",
+  "level": "medium",
+  "question": "Which 5 states have the highest income per person, and how many customers do we have in each? Show state, income per person and customer count, richest first.",
+  "gold_sql": "SELECT state, MAX(state_income_pc) AS income, COUNT(*) FROM dim_customer GROUP BY state ORDER BY income DESC LIMIT 5",
+  "order_matters": true
+ },
+ {
+  "id": "M33",
+  "level": "medium",
+  "question": "For delivered orders, how many arrived late and how many on time in each customer region?",
+  "gold_sql": "SELECT c.region, SUM(o.is_late = 1), SUM(o.is_late = 0) FROM fact_orders o JOIN dim_customer c ON c.customer_unique_id = o.customer_unique_id WHERE o.is_delivered = 1 GROUP BY c.region",
+  "order_matters": false
+ },
+ {
+  "id": "M34",
+  "level": "medium",
+  "question": "In the health_beauty category, which 5 customer states pay the highest average item price? Show the state and the average.",
+  "gold_sql": "SELECT i.customer_state, AVG(i.price) AS avg_price FROM fact_order_items i JOIN dim_product p ON p.product_id = i.product_id WHERE p.category = 'health_beauty' GROUP BY i.customer_state ORDER BY avg_price DESC LIMIT 5",
+  "order_matters": false
+ },
+ {
+  "id": "M35",
+  "level": "medium",
+  "question": "How many orders were delivered in less than 7 days in each customer region?",
+  "gold_sql": "SELECT c.region, COUNT(*) FROM fact_orders o JOIN dim_customer c ON c.customer_unique_id = o.customer_unique_id WHERE o.is_delivered = 1 AND o.delivery_days < 7 GROUP BY c.region",
+  "order_matters": false
+ },
+ {
+  "id": "M36",
+  "level": "medium",
+  "question": "Among delivered orders, which main payment type has the highest average items total per order, and what is it?",
+  "gold_sql": "SELECT main_payment_type, AVG(items_price) AS avg_items FROM fact_orders WHERE is_delivered = 1 GROUP BY main_payment_type ORDER BY avg_items DESC LIMIT 1",
+  "order_matters": false
+ },
+ {
+  "id": "M37",
+  "level": "medium",
+  "question": "What is the average delivery time in days for delivered orders that got a 1-star review, and for those that got a 5-star review?",
+  "gold_sql": "SELECT review_score, AVG(delivery_days) FROM fact_orders WHERE is_delivered = 1 AND review_score IN (1, 5) GROUP BY review_score",
+  "order_matters": false
+ },
+ {
+  "id": "M38",
+  "level": "medium",
+  "question": "How many customers in the 'Repeat - lapsed' segment live in each region?",
+  "gold_sql": "SELECT c.region, COUNT(*) FROM rfm_segments r JOIN dim_customer c ON c.customer_unique_id = r.customer_unique_id WHERE r.segment = 'Repeat - lapsed' GROUP BY c.region",
+  "order_matters": false
+ },
+ {
+  "id": "M39",
+  "level": "medium",
+  "question": "What is the average total spend per customer in each region, according to the RFM table, highest first?",
+  "gold_sql": "SELECT c.region, AVG(r.monetary) AS avg_spend FROM rfm_segments r JOIN dim_customer c ON c.customer_unique_id = r.customer_unique_id GROUP BY c.region ORDER BY avg_spend DESC",
+  "order_matters": true
+ },
+ {
+  "id": "M40",
+  "level": "medium",
+  "question": "Which 5 categories have the most different products that were sold at least once? Show the category and the number of products.",
+  "gold_sql": "SELECT p.category, COUNT(DISTINCT i.product_id) AS n FROM fact_order_items i JOIN dim_product p ON p.product_id = i.product_id GROUP BY p.category ORDER BY n DESC LIMIT 5",
+  "order_matters": false
+ },
+ {
+  "id": "H01",
+  "level": "hard",
+  "question": "For each month of 2018, what was the percentage change in total item price of delivered orders compared with the previous month? (January is compared with December 2017.) Show the month as YYYY-MM and the change, in month order.",
+  "gold_sql": "WITH m AS (SELECT strftime('%Y-%m', purchase_date) AS month, SUM(price) AS total FROM fact_order_items WHERE is_delivered = 1 GROUP BY month), g AS (SELECT month, 100.0 * (total - LAG(total) OVER (ORDER BY month)) / LAG(total) OVER (ORDER BY month) AS change_pct FROM m) SELECT month, change_pct FROM g WHERE month LIKE '2018-%' ORDER BY month",
+  "order_matters": true
+ },
+ {
+  "id": "H03",
+  "level": "hard",
+  "question": "Within each region, rank the states by number of orders placed by customers living there. Show the region, the state, the number of orders and the rank inside its region.",
+  "gold_sql": "WITH s AS (SELECT c.region, c.state, COUNT(*) AS orders FROM fact_orders o JOIN dim_customer c ON c.customer_unique_id = o.customer_unique_id GROUP BY c.region, c.state) SELECT region, state, orders, RANK() OVER (PARTITION BY region ORDER BY orders DESC) FROM s",
+  "order_matters": false
+ },
+ {
+  "id": "H04",
+  "level": "hard",
+  "question": "For each seller state, which seller has sold the most items? Show the state, the seller id and the number of items. If sellers tie for first place in a state, show all of them.",
+  "gold_sql": "WITH s AS (SELECT d.state, i.seller_id, COUNT(*) AS items FROM fact_order_items i JOIN dim_seller d ON d.seller_id = i.seller_id GROUP BY d.state, i.seller_id), r AS (SELECT state, seller_id, items, RANK() OVER (PARTITION BY state ORDER BY items DESC) AS rk FROM s) SELECT state, seller_id, items FROM r WHERE rk = 1",
+  "order_matters": false
+ },
+ {
+  "id": "H06",
+  "level": "hard",
+  "question": "For customers with at least two delivered orders, what is the average number of days between their first and second order?",
+  "gold_sql": "WITH o AS (SELECT customer_unique_id, purchase_date, ROW_NUMBER() OVER (PARTITION BY customer_unique_id ORDER BY order_purchase_timestamp) AS n FROM fact_orders WHERE is_delivered = 1) SELECT AVG(julianday(b.purchase_date) - julianday(a.purchase_date)) FROM o a JOIN o b ON b.customer_unique_id = a.customer_unique_id AND a.n = 1 AND b.n = 2",
+  "order_matters": false
+ },
+ {
+  "id": "H07",
+  "level": "hard",
+  "question": "Show the running total of orders placed, month by month, during 2017. Show the month as YYYY-MM, the orders that month and the running total, in month order.",
+  "gold_sql": "WITH m AS (SELECT strftime('%Y-%m', purchase_date) AS month, COUNT(*) AS orders FROM fact_orders WHERE strftime('%Y', purchase_date) = '2017' GROUP BY month) SELECT month, orders, SUM(orders) OVER (ORDER BY month) FROM m ORDER BY month",
+  "order_matters": true
+ },
+ {
+  "id": "H08",
+  "level": "hard",
+  "question": "Among categories with at least 500 delivered items, which 5 have the highest percentage of delivered items in orders that arrived late? Show the category and the percentage.",
+  "gold_sql": "SELECT p.category, 100.0 * AVG(o.is_late) AS late_pct FROM fact_order_items i JOIN fact_orders o ON o.order_id = i.order_id JOIN dim_product p ON p.product_id = i.product_id WHERE o.is_delivered = 1 GROUP BY p.category HAVING COUNT(*) >= 500 ORDER BY late_pct DESC LIMIT 5",
+  "order_matters": false
+ },
+ {
+  "id": "H12",
+  "level": "hard",
+  "question": "For each customer region, what percentage of customers in the RFM table are in a repeat segment (a segment whose name starts with 'Repeat')?",
+  "gold_sql": "SELECT c.region, 100.0 * AVG(r.segment LIKE 'Repeat%') FROM rfm_segments r JOIN dim_customer c ON c.customer_unique_id = r.customer_unique_id GROUP BY c.region",
+  "order_matters": false
+ },
+ {
+  "id": "H13",
+  "level": "hard",
+  "question": "Among delivered orders, on which day of the week (0 = Sunday to 6 = Saturday) is the average items total per order highest, and what is it?",
+  "gold_sql": "SELECT d.weekday_num, AVG(o.items_price) AS avg_items FROM fact_orders o JOIN dim_date d ON d.date = o.purchase_date WHERE o.is_delivered = 1 GROUP BY d.weekday_num ORDER BY avg_items DESC LIMIT 1",
+  "order_matters": false
+ },
+ {
+  "id": "H14",
+  "level": "hard",
+  "question": "For delivered orders, group them as 'on time', 'late 1-6 days' or 'late 7+ days' (days late = delivery days minus estimated days), and show the number of orders and the average review score for each group.",
+  "gold_sql": "SELECT CASE WHEN is_late = 0 THEN 'on time' WHEN delivery_days - estimated_days >= 7 THEN 'late 7+ days' ELSE 'late 1-6 days' END AS grp, COUNT(*), AVG(review_score) FROM fact_orders WHERE is_delivered = 1 GROUP BY grp",
+  "order_matters": false
+ },
+ {
+  "id": "H15",
+  "level": "hard",
+  "question": "Ranking categories by total item price of delivered orders, how many categories together make up the first 80% of the total? Count categories until the cumulative share first reaches 80%.",
+  "gold_sql": "WITH cat AS (SELECT p.category, SUM(i.price) AS total FROM fact_order_items i JOIN dim_product p ON p.product_id = i.product_id WHERE i.is_delivered = 1 GROUP BY p.category), c AS (SELECT 100.0 * SUM(total) OVER (ORDER BY total DESC) / SUM(total) OVER () AS cum FROM cat) SELECT (SELECT COUNT(*) FROM c WHERE cum < 80) + 1",
+  "order_matters": false
+ },
+ {
+  "id": "H16",
+  "level": "hard",
+  "question": "For each month of 2018, which category had the highest total item price of delivered orders? Show the month as YYYY-MM, the category and the total, in month order.",
+  "gold_sql": "WITH m AS (SELECT strftime('%Y-%m', i.purchase_date) AS month, p.category, SUM(i.price) AS total FROM fact_order_items i JOIN dim_product p ON p.product_id = i.product_id WHERE i.is_delivered = 1 AND strftime('%Y', i.purchase_date) = '2018' GROUP BY month, p.category), r AS (SELECT month, category, total, ROW_NUMBER() OVER (PARTITION BY month ORDER BY total DESC) AS rn FROM m) SELECT month, category, total FROM r WHERE rn = 1 ORDER BY month",
+  "order_matters": true
+ },
+ {
+  "id": "H19",
+  "level": "hard",
+  "question": "For customers with at least two delivered orders, what is the average items total of their first order, and of their later orders?",
+  "gold_sql": "WITH o AS (SELECT customer_unique_id, items_price, ROW_NUMBER() OVER (PARTITION BY customer_unique_id ORDER BY order_purchase_timestamp) AS n, COUNT(*) OVER (PARTITION BY customer_unique_id) AS cnt FROM fact_orders WHERE is_delivered = 1) SELECT AVG(CASE WHEN n = 1 THEN items_price END), AVG(CASE WHEN n > 1 THEN items_price END) FROM o WHERE cnt >= 2",
+  "order_matters": false
+ },
+ {
+  "id": "H20",
+  "level": "hard",
+  "question": "Counting all order items whatever the order status, how many sellers sold more in total item price during 2018 than during 2017, among sellers that had sales in 2017?",
+  "gold_sql": "WITH s AS (SELECT seller_id, SUM(CASE WHEN strftime('%Y', purchase_date) = '2017' THEN price ELSE 0 END) AS y17, SUM(CASE WHEN strftime('%Y', purchase_date) = '2018' THEN price ELSE 0 END) AS y18 FROM fact_order_items GROUP BY seller_id) SELECT COUNT(*) FROM s WHERE y17 > 0 AND y18 > y17",
+  "order_matters": false
+ },
+ {
+  "id": "H21",
+  "level": "hard",
+  "question": "In each customer region, what percentage of orders have a total freight higher than the total item price?",
+  "gold_sql": "SELECT c.region, 100.0 * AVG(o.freight_total > o.items_price) FROM fact_orders o JOIN dim_customer c ON c.customer_unique_id = o.customer_unique_id WHERE o.items_price IS NOT NULL GROUP BY c.region",
+  "order_matters": false
+ },
+ {
+  "id": "H23",
+  "level": "hard",
+  "question": "Which customer states have a longer average delivery time than the national average, for delivered orders? Show the state and its average.",
+  "gold_sql": "SELECT customer_state, AVG(delivery_days) FROM fact_orders WHERE is_delivered = 1 GROUP BY customer_state HAVING AVG(delivery_days) > (SELECT AVG(delivery_days) FROM fact_orders WHERE is_delivered = 1)",
+  "order_matters": false
+ },
+ {
+  "id": "H24",
+  "level": "hard",
+  "question": "Group delivered orders by average seller-to-customer distance: under 100 km, 100-500 km, 500-1000 km and over 1000 km. Show the number of orders and the average review score for each group (ignore orders without a distance).",
+  "gold_sql": "SELECT CASE WHEN avg_distance_km < 100 THEN 'under 100' WHEN avg_distance_km < 500 THEN '100-500' WHEN avg_distance_km <= 1000 THEN '500-1000' ELSE 'over 1000' END AS bucket, COUNT(*), AVG(review_score) FROM fact_orders WHERE is_delivered = 1 AND avg_distance_km IS NOT NULL GROUP BY bucket",
+  "order_matters": false
+ },
+ {
+  "id": "H27",
+  "level": "hard",
+  "question": "For each customer region, what are the top 3 categories by number of delivered items? Show region, category, item count and the rank (1-3).",
+  "gold_sql": "WITH rc AS (SELECT c.region, p.category, COUNT(*) AS items FROM fact_order_items i JOIN dim_customer c ON c.customer_unique_id = i.customer_unique_id JOIN dim_product p ON p.product_id = i.product_id WHERE i.is_delivered = 1 GROUP BY c.region, p.category), r AS (SELECT region, category, items, ROW_NUMBER() OVER (PARTITION BY region ORDER BY items DESC, category) AS rn FROM rc) SELECT region, category, items, rn FROM r WHERE rn <= 3",
+  "order_matters": false
+ },
+ {
+  "id": "H28",
+  "level": "hard",
+  "question": "Among seller states with at least 1,000 items sold, which 5 send the highest percentage of their items to customers in other states? Show the state and the percentage.",
+  "gold_sql": "SELECT s.state, 100.0 * AVG(i.customer_state <> s.state) AS pct_out FROM fact_order_items i JOIN dim_seller s ON s.seller_id = i.seller_id GROUP BY s.state HAVING COUNT(*) >= 1000 ORDER BY pct_out DESC LIMIT 5",
+  "order_matters": false
+ },
+ {
+  "id": "H29",
+  "level": "hard",
+  "question": "What is the longest gap in days between two consecutive orders of the same customer?",
+  "gold_sql": "WITH o AS (SELECT customer_unique_id, julianday(purchase_date) - julianday(LAG(purchase_date) OVER (PARTITION BY customer_unique_id ORDER BY order_purchase_timestamp)) AS gap FROM fact_orders) SELECT MAX(gap) FROM o",
+  "order_matters": false
+ },
+ {
+  "id": "H31",
+  "level": "hard",
+  "question": "For each month from January to August, what is the year-over-year percentage growth in number of orders from 2017 to 2018? Show the month number and the growth, in month order.",
+  "gold_sql": "WITH m AS (SELECT CAST(strftime('%m', purchase_date) AS INTEGER) AS mon, SUM(strftime('%Y', purchase_date) = '2017') AS y17, SUM(strftime('%Y', purchase_date) = '2018') AS y18 FROM fact_orders GROUP BY mon) SELECT mon, 100.0 * (y18 - y17) / y17 FROM m WHERE mon BETWEEN 1 AND 8 ORDER BY mon",
+  "order_matters": true
+ },
+ {
+  "id": "H32",
+  "level": "hard",
+  "question": "For delivered orders that arrived on time, how many days before the estimated date did they arrive on average, in each customer region?",
+  "gold_sql": "SELECT c.region, AVG(o.estimated_days - o.delivery_days) FROM fact_orders o JOIN dim_customer c ON c.customer_unique_id = o.customer_unique_id WHERE o.is_delivered = 1 AND o.is_late = 0 GROUP BY c.region",
+  "order_matters": false
+ },
+ {
+  "id": "H33",
+  "level": "hard",
+  "question": "How many products have been sold by more than one seller?",
+  "gold_sql": "SELECT COUNT(*) FROM (SELECT product_id FROM fact_order_items GROUP BY product_id HAVING COUNT(DISTINCT seller_id) > 1)",
+  "order_matters": false
+ },
+ {
+  "id": "H35",
+  "level": "hard",
+  "question": "Who are the 5 customers with the highest total item price across delivered orders? Show the customer id, their state, their number of delivered orders and their total.",
+  "gold_sql": "SELECT i.customer_unique_id, c.state, COUNT(DISTINCT i.order_id), SUM(i.price) AS total FROM fact_order_items i JOIN dim_customer c ON c.customer_unique_id = i.customer_unique_id WHERE i.is_delivered = 1 GROUP BY i.customer_unique_id, c.state ORDER BY total DESC LIMIT 5",
+  "order_matters": false
+ },
+ {
+  "id": "D01",
+  "level": "definition",
+  "question": "What was our total revenue?",
+  "gold_sql": "SELECT SUM(price) FROM fact_order_items WHERE is_revenue_item = 1",
+  "order_matters": false
+ },
+ {
+  "id": "D03",
+  "level": "definition",
+  "question": "What is our late rate, as a percentage?",
+  "gold_sql": "SELECT 100.0 * AVG(is_late) FROM fact_orders WHERE is_revenue_order = 1",
+  "order_matters": false
+ },
+ {
+  "id": "D04",
+  "level": "definition",
+  "question": "What is our average order value?",
+  "gold_sql": "SELECT SUM(price) / COUNT(DISTINCT order_id) FROM fact_order_items WHERE is_revenue_item = 1",
+  "order_matters": false
+ },
+ {
+  "id": "D05",
+  "level": "definition",
+  "question": "How many active customers did we have in March 2018?",
+  "gold_sql": "SELECT COUNT(DISTINCT customer_unique_id) FROM fact_orders WHERE is_revenue_order = 1 AND strftime('%Y-%m', purchase_date) = '2018-03'",
+  "order_matters": false
+ },
+ {
+  "id": "D06",
+  "level": "definition",
+  "question": "What was our freight revenue in 2017?",
+  "gold_sql": "SELECT SUM(freight_value) FROM fact_order_items WHERE is_revenue_item = 1 AND strftime('%Y', purchase_date) = '2017'",
+  "order_matters": false
+ },
+ {
+  "id": "D07",
+  "level": "definition",
+  "question": "Which 5 customer states have the highest revenue per 1,000 residents? Show the state and the value.",
+  "gold_sql": "WITH r AS (SELECT customer_state, SUM(price) AS revenue FROM fact_order_items WHERE is_revenue_item = 1 GROUP BY customer_state), p AS (SELECT state, MAX(state_population) AS pop FROM dim_customer GROUP BY state) SELECT r.customer_state, 1000.0 * r.revenue / p.pop AS per_1000 FROM r JOIN p ON p.state = r.customer_state ORDER BY per_1000 DESC LIMIT 5",
+  "order_matters": false
+ },
+ {
+  "id": "D08",
+  "level": "definition",
+  "question": "What percentage of reviewed delivered orders got a low review?",
+  "gold_sql": "SELECT 100.0 * AVG(review_score <= 2) FROM fact_orders WHERE is_revenue_order = 1 AND review_score IS NOT NULL",
+  "order_matters": false
+ },
+ {
+  "id": "D11",
+  "level": "definition",
+  "question": "What percentage of revenue comes from repeat customers?",
+  "gold_sql": "WITH c AS (SELECT customer_unique_id, COUNT(DISTINCT order_id) AS n, SUM(price) AS spend FROM fact_order_items WHERE is_revenue_item = 1 GROUP BY customer_unique_id) SELECT 100.0 * SUM(CASE WHEN n >= 2 THEN spend ELSE 0 END) / SUM(spend) FROM c",
+  "order_matters": false
+ },
+ {
+  "id": "D12",
+  "level": "definition",
+  "question": "What was our revenue in each month of 2018? Show the month as YYYY-MM, in month order.",
+  "gold_sql": "SELECT strftime('%Y-%m', purchase_date) AS month, SUM(price) FROM fact_order_items WHERE is_revenue_item = 1 AND strftime('%Y', purchase_date) = '2018' GROUP BY month ORDER BY month",
+  "order_matters": true
+ },
+ {
+  "id": "D13",
+  "level": "definition",
+  "question": "How many repeat customers do we have?",
+  "gold_sql": "SELECT COUNT(*) FROM (SELECT customer_unique_id FROM fact_orders WHERE is_revenue_order = 1 GROUP BY customer_unique_id HAVING COUNT(*) >= 2)",
+  "order_matters": false
+ }
+]

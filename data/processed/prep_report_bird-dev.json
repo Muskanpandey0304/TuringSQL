@@ -1,0 +1,15 @@
+{
+  "dataset": "bird-dev",
+  "schema_args": {
+    "n_sample_rows": 2,
+    "max_value_len": 24
+  },
+  "max_rows": 10000,
+  "databases": 11,
+  "drop_duplicate": 1,
+  "drop_timeout": 2,
+  "drop_too_many_rows": 19,
+  "kept": 1512,
+  "raw": 1534,
+  "source_zip": "dev.zip"
+}

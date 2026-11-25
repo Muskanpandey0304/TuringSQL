@@ -1,0 +1,24 @@
+{
+  "prompt_version": "v1",
+  "sources": [
+    "spider-train"
+  ],
+  "max_len": 2048,
+  "evidence_in_prompt": true,
+  "databases": 143,
+  "val_databases": [
+    "spider:academic",
+    "spider:browser_web",
+    "spider:customers_and_invoices",
+    "spider:department_management",
+    "spider:document_management",
+    "spider:soccer_2",
+    "spider:storm_record"
+  ],
+  "train_examples": 7894,
+  "val_examples": 489,
+  "drop_too_long_spider-train": 242,
+  "kept_spider-train": 8383,
+  "tokens": 4962943,
+  "mean_tokens": 592.0
+}

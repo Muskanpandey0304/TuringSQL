@@ -1,0 +1,16 @@
+{
+  "dataset": "spider-train",
+  "schema_args": {
+    "n_sample_rows": 2,
+    "max_value_len": 24
+  },
+  "max_rows": 10000,
+  "databases": 146,
+  "drop_duplicate": 25,
+  "drop_exec_error": 3,
+  "drop_too_many_rows": 6,
+  "kept": 8625,
+  "kept_empty_result": 1606,
+  "raw": 8659,
+  "source_zip": "spider_data.zip"
+}

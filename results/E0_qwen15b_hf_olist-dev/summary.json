@@ -1,0 +1,84 @@
+{
+  "config": {
+    "run_id": "E0_qwen15b_hf_olist-dev",
+    "model": "Qwen/Qwen2.5-Coder-1.5B-Instruct",
+    "engine": "hf",
+    "dataset": "olist-dev",
+    "max_tokens": 256,
+    "concurrency": 1,
+    "n_sample_rows": 2,
+    "use_definitions": false,
+    "n_shots": 0,
+    "notes": "",
+    "extra": {
+      "limit": null,
+      "n_examples": 40
+    }
+  },
+  "prompt_version": "v1",
+  "created_utc": "2026-11-25T07:07:29Z",
+  "git_commit": null,
+  "platform": "Linux x86_64 py3.13.16",
+  "ex_strict": {
+    "n": 40,
+    "acc": 0.325,
+    "ci95": [
+      0.175,
+      0.475
+    ]
+  },
+  "ex_relaxed": {
+    "n": 40,
+    "acc": 0.325,
+    "ci95": [
+      0.175,
+      0.475
+    ]
+  },
+  "valid_sql_rate": 0.6,
+  "by_level": {
+    "definition": {
+      "n": 5,
+      "acc": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ]
+    },
+    "easy": {
+      "n": 10,
+      "acc": 0.7,
+      "ci95": [
+        0.4,
+        0.9
+      ]
+    },
+    "hard": {
+      "n": 12,
+      "acc": 0.0833,
+      "ci95": [
+        0.0,
+        0.25
+      ]
+    },
+    "medium": {
+      "n": 13,
+      "acc": 0.3846,
+      "ci95": [
+        0.1538,
+        0.6154
+      ]
+    }
+  },
+  "errors": {
+    "exec_error": 16
+  },
+  "latency_s": {
+    "mean": 3.129,
+    "p50": 2.83,
+    "p95": 9.03
+  },
+  "wall_s": 128.7,
+  "mean_prompt_tokens": 1716.6,
+  "cached_token_share": null
+}

@@ -1,0 +1,83 @@
+{
+  "config": {
+    "run_id": "E0_qwen15b_turingserve_olist-dev",
+    "model": "qwen-coder-1.5b",
+    "engine": "openai",
+    "dataset": "olist-dev",
+    "max_tokens": 256,
+    "concurrency": 4,
+    "n_sample_rows": 2,
+    "use_definitions": false,
+    "notes": "Base Qwen2.5-Coder-1.5B-Instruct, zero-shot, TuringServe CPU reference kernels, fp32",
+    "extra": {
+      "limit": null,
+      "n_examples": 40
+    }
+  },
+  "prompt_version": "v1",
+  "created_utc": "2026-11-24T08:24:02Z",
+  "git_commit": null,
+  "platform": "Windows AMD64 py3.10.11",
+  "ex_strict": {
+    "n": 40,
+    "acc": 0.325,
+    "ci95": [
+      0.175,
+      0.475
+    ]
+  },
+  "ex_relaxed": {
+    "n": 40,
+    "acc": 0.325,
+    "ci95": [
+      0.175,
+      0.475
+    ]
+  },
+  "valid_sql_rate": 0.6,
+  "by_level": {
+    "definition": {
+      "n": 5,
+      "acc": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ]
+    },
+    "easy": {
+      "n": 10,
+      "acc": 0.7,
+      "ci95": [
+        0.4,
+        0.9
+      ]
+    },
+    "hard": {
+      "n": 12,
+      "acc": 0.0833,
+      "ci95": [
+        0.0,
+        0.25
+      ]
+    },
+    "medium": {
+      "n": 13,
+      "acc": 0.3846,
+      "ci95": [
+        0.1538,
+        0.6154
+      ]
+    }
+  },
+  "errors": {
+    "exec_error": 16
+  },
+  "latency_s": {
+    "mean": 89.312,
+    "p50": 73.131,
+    "p95": 258.873
+  },
+  "wall_s": 913.9,
+  "mean_prompt_tokens": 1716.6,
+  "cached_token_share": 0.9542
+}

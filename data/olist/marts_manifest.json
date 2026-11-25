@@ -1,0 +1,34 @@
+{
+  "source": "HEHE/olist-revenue-leak-analysis/data/olist.db",
+  "tables": {
+    "dim_customer": {
+      "rows": 96096,
+      "sha256": "dfee35a63fedc7b069f072e034bfcddbda8b4da59ff956f44a82c448f64e3ae5"
+    },
+    "dim_date": {
+      "rows": 852,
+      "sha256": "9d8b2ce7d601476a42031f894c6ad5ef26a9e27349dcd1d3121318ee642c088d"
+    },
+    "dim_product": {
+      "rows": 32951,
+      "sha256": "88b0777d2968055f3b988d6bcf89dae4b2ee260d2f7734824a986e5b6e140263"
+    },
+    "dim_seller": {
+      "rows": 3095,
+      "sha256": "ffb9f23d8aa08ebdb00bce367c0a7315c7a65241b08c83e4124fd0e8703f72c1"
+    },
+    "fact_order_items": {
+      "rows": 112650,
+      "sha256": "e34535c579ced5d322f7268af03e42943c91de8f7a0877b3bfda347cb9906d72"
+    },
+    "fact_orders": {
+      "rows": 99441,
+      "sha256": "f27baa8dc2175322fbac3178428fae69972217d625e1ec55ccd2448f56ac4990"
+    },
+    "rfm_segments": {
+      "rows": 93096,
+      "sha256": "abd1601ae2fd1727ed5073aeb92074d2bd05f50f7080fde97fb3841798f3133b"
+    }
+  },
+  "combined_sha256": "6bf3e459a5f55ec090f79c80ac3b403aaef512ff78088c2cdf8565c914c6b75f"
+}

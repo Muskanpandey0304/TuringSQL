@@ -1,0 +1,62 @@
+{
+  "config": {
+    "run_id": "E3_seed0_hf_bird-dev",
+    "model": "/kaggle/working/turingsql-1.5b",
+    "engine": "hf",
+    "dataset": "bird-dev",
+    "max_tokens": 256,
+    "concurrency": 1,
+    "n_sample_rows": 2,
+    "use_definitions": false,
+    "n_shots": 0,
+    "notes": "",
+    "extra": {
+      "limit": 500,
+      "n_examples": 500
+    }
+  },
+  "prompt_version": "v1",
+  "created_utc": "2026-11-25T06:41:56Z",
+  "git_commit": null,
+  "platform": "Linux x86_64 py3.13.16",
+  "ex_strict": {
+    "n": 500,
+    "acc": 0.244,
+    "ci95": [
+      0.206,
+      0.28
+    ]
+  },
+  "ex_relaxed": {
+    "n": 500,
+    "acc": 0.248,
+    "ci95": [
+      0.208,
+      0.286
+    ]
+  },
+  "valid_sql_rate": 0.66,
+  "by_level": {
+    "all": {
+      "n": 500,
+      "acc": 0.244,
+      "ci95": [
+        0.206,
+        0.28
+      ]
+    }
+  },
+  "errors": {
+    "exec_error": 157,
+    "unsafe": 12,
+    "too_many_rows": 1
+  },
+  "latency_s": {
+    "mean": 2.272,
+    "p50": 2.189,
+    "p95": 3.883
+  },
+  "wall_s": 1149.2,
+  "mean_prompt_tokens": 1299.9,
+  "cached_token_share": null
+}

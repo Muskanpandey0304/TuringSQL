@@ -1,0 +1,60 @@
+{
+  "config": {
+    "run_id": "E1_qwen15b_3shot_hf_spider-dev",
+    "model": "Qwen/Qwen2.5-Coder-1.5B-Instruct",
+    "engine": "hf",
+    "dataset": "spider-dev",
+    "max_tokens": 256,
+    "concurrency": 1,
+    "n_sample_rows": 2,
+    "use_definitions": false,
+    "n_shots": 3,
+    "notes": "",
+    "extra": {
+      "limit": 500,
+      "n_examples": 500
+    }
+  },
+  "prompt_version": "v1",
+  "created_utc": "2026-11-25T07:19:10Z",
+  "git_commit": null,
+  "platform": "Linux x86_64 py3.13.16",
+  "ex_strict": {
+    "n": 500,
+    "acc": 0.632,
+    "ci95": [
+      0.59,
+      0.674
+    ]
+  },
+  "ex_relaxed": {
+    "n": 500,
+    "acc": 0.634,
+    "ci95": [
+      0.594,
+      0.676
+    ]
+  },
+  "valid_sql_rate": 0.82,
+  "by_level": {
+    "all": {
+      "n": 500,
+      "acc": 0.632,
+      "ci95": [
+        0.59,
+        0.674
+      ]
+    }
+  },
+  "errors": {
+    "exec_error": 90
+  },
+  "latency_s": {
+    "mean": 1.32,
+    "p50": 1.019,
+    "p95": 2.723
+  },
+  "wall_s": 668.3,
+  "mean_prompt_tokens": 863.9,
+  "cached_token_share": null
+}

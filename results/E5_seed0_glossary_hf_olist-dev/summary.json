@@ -1,0 +1,85 @@
+{
+  "config": {
+    "run_id": "E5_seed0_glossary_hf_olist-dev",
+    "model": "/kaggle/working/turingsql-1.5b",
+    "engine": "hf",
+    "dataset": "olist-dev",
+    "max_tokens": 256,
+    "concurrency": 1,
+    "n_sample_rows": 2,
+    "use_definitions": true,
+    "n_shots": 0,
+    "notes": "",
+    "extra": {
+      "limit": null,
+      "n_examples": 40
+    }
+  },
+  "prompt_version": "v1",
+  "created_utc": "2026-11-25T07:45:48Z",
+  "git_commit": null,
+  "platform": "Linux x86_64 py3.13.16",
+  "ex_strict": {
+    "n": 40,
+    "acc": 0.225,
+    "ci95": [
+      0.1,
+      0.375
+    ]
+  },
+  "ex_relaxed": {
+    "n": 40,
+    "acc": 0.225,
+    "ci95": [
+      0.1,
+      0.375
+    ]
+  },
+  "valid_sql_rate": 0.65,
+  "by_level": {
+    "definition": {
+      "n": 5,
+      "acc": 0.2,
+      "ci95": [
+        0.0,
+        0.6
+      ]
+    },
+    "easy": {
+      "n": 10,
+      "acc": 0.6,
+      "ci95": [
+        0.3,
+        0.9
+      ]
+    },
+    "hard": {
+      "n": 12,
+      "acc": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ]
+    },
+    "medium": {
+      "n": 13,
+      "acc": 0.1538,
+      "ci95": [
+        0.0,
+        0.3846
+      ]
+    }
+  },
+  "errors": {
+    "exec_error": 13,
+    "timeout": 1
+  },
+  "latency_s": {
+    "mean": 3.237,
+    "p50": 2.86,
+    "p95": 8.266
+  },
+  "wall_s": 143.7,
+  "mean_prompt_tokens": 1752.1,
+  "cached_token_share": null
+}

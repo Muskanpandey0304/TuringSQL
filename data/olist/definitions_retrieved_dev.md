@@ -1,0 +1,162 @@
+# Retrieved definitions (dev, k=3, min_prob=0.1)
+
+- **E03** (easy) How many unique customers are there?
+  - `repeat_customer` 0.002 ~~(below gate)~~
+  - `customer` 0.001 (term match)
+  - `repeat_rate` 0.000 ~~(below gate)~~
+- **E04** (easy) How many sellers are on the marketplace?
+  - `repeat_rate` 0.001 ~~(below gate)~~
+  - `repeat_customer` 0.000 ~~(below gate)~~
+  - `active_customer` 0.000 ~~(below gate)~~
+- **E07** (easy) What is the average review score across all orders that have a review?
+  - `review` 0.973 (term match)
+  - `low_review` 0.132
+  - `order` 0.003 (term match)
+- **E09** (easy) What is the highest total freight charged on a single order?
+  - `revenue` 0.007 ~~(below gate)~~
+  - `order` 0.003 (term match)
+  - `late_rate` 0.002 ~~(below gate)~~
+- **E11** (easy) How many sellers are based in Rio de Janeiro state (RJ)?
+  - `revenue_per_resident` 0.000 ~~(below gate)~~
+  - `repeat_rate` 0.000 ~~(below gate)~~
+  - `repeat_customer` 0.000 ~~(below gate)~~
+- **E17** (easy) How many orders contained more than 5 items?
+  - `order` 0.091 (term match)
+  - `repeat_customer` 0.016 ~~(below gate)~~
+  - `window` 0.012 ~~(below gate)~~
+- **E18** (easy) How many customers are in the 'Repeat - active' segment?
+  - `active_customer` 0.040 ~~(below gate)~~
+  - `repeat_customer` 0.028 ~~(below gate)~~
+  - `repeat_rate` 0.017 ~~(below gate)~~
+- **E19** (easy) What is the largest total amount a single customer has spent, according to the RFM table?
+  - `active_customer` 0.000 ~~(below gate)~~
+  - `repeat_rate` 0.000 ~~(below gate)~~
+  - `repeat_customer` 0.000 ~~(below gate)~~
+- **E24** (easy) Which city has the most customers, and how many customers does it have?
+  - `revenue_per_resident` 0.002 ~~(below gate)~~
+  - `repeat_customer` 0.002 ~~(below gate)~~
+  - `repeat_rate` 0.002 ~~(below gate)~~
+- **E25** (easy) How many delivered orders took more than 30 days to arrive?
+  - `active_customer` 0.175
+  - `repeat_customer` 0.098 ~~(below gate)~~
+  - `delivered` 0.049 (term match)
+- **M03** (medium) Which 10 product categories have the highest total item price across delivered orders? Show the category and the total.
+  - `revenue` 0.027 ~~(below gate)~~
+  - `delivered` 0.010 (term match)
+  - `freight_revenue` 0.004 ~~(below gate)~~
+- **M04** (medium) Which seller states have more than 100 sellers? Show the state and the number of sellers.
+  - `repeat_rate` 0.000 ~~(below gate)~~
+  - `revenue_per_resident` 0.000 ~~(below gate)~~
+  - `distance` 0.000 ~~(below gate)~~
+- **M06** (medium) Among customer states with at least 1,000 delivered orders, which 5 have the highest percentage of delivered orders that arrived after the estimated date? Show the state and the percentage.
+  - `repeat_customer` 0.377
+  - `delivered` 0.227 (term match)
+  - `active_customer` 0.189
+- **M07** (medium) Which 10 sellers have sold the most items? Show the seller id and the number of items.
+  - `revenue` 0.000 ~~(below gate)~~
+  - `repeat_customer` 0.000 ~~(below gate)~~
+  - `customer` 0.000 ~~(below gate)~~
+- **M13** (medium) For each customer segment, how many customers are in it and what is their average total spend?
+  - `repeat_customer` 0.009 ~~(below gate)~~
+  - `repeat_rate` 0.007 ~~(below gate)~~
+  - `active_customer` 0.003 ~~(below gate)~~
+- **M14** (medium) Which customer states have an average delivery time of more than 20 days for delivered orders? Show the state and the average.
+  - `active_customer` 0.469
+  - `late` 0.101
+  - `delivered` 0.083 (term match)
+- **M16** (medium) Among orders with a known main payment type, what percentage uses each payment type?
+  - `order` 0.003 (term match)
+  - `revenue` 0.002 ~~(below gate)~~
+  - `repeat_rate` 0.001 ~~(below gate)~~
+- **M18** (medium) How many orders include at least one item sent by a seller located in the same state as the customer?
+  - `repeat_customer` 0.197
+  - `active_customer` 0.168
+  - `repeat_rate` 0.089 ~~(below gate)~~
+- **M20** (medium) List the cities in Sao Paulo state (SP) with more than 1,000 customers, with their customer counts, largest first.
+  - `revenue_per_resident` 0.000 ~~(below gate)~~
+  - `active_customer` 0.000 ~~(below gate)~~
+  - `repeat_rate` 0.000 ~~(below gate)~~
+- **M24** (medium) Which 5 categories have the most products weighing over 10 kg? Show the category and the count.
+  - `review` 0.000 ~~(below gate)~~
+  - `revenue` 0.000 ~~(below gate)~~
+  - `aov` 0.000 ~~(below gate)~~
+- **M25** (medium) For orders paid mainly by credit card, which 5 customer states use the most installments on average? Show the state and the average.
+  - `aov` 0.004 ~~(below gate)~~
+  - `freight_revenue` 0.002 ~~(below gate)~~
+  - `revenue` 0.002 ~~(below gate)~~
+- **M31** (medium) Which 10 cities have the most sellers? Show the city, its state and the number of sellers.
+  - `revenue_per_resident` 0.000 ~~(below gate)~~
+  - `repeat_rate` 0.000 ~~(below gate)~~
+  - `repeat_customer` 0.000 ~~(below gate)~~
+- **M32** (medium) What is the average item price for items where the seller and customer are in the same state, compared with items where they are in different states? Show a flag (1 = same state, 0 = different states) and the average.
+  - `revenue` 0.008 ~~(below gate)~~
+  - `aov` 0.002 ~~(below gate)~~
+  - `distance` 0.001 ~~(below gate)~~
+- **H02** (hard) Rank product categories by total item price of delivered orders. For the top 10, show the category, the total, the rank and the cumulative share of the overall total as a percentage.
+  - `revenue` 0.072 ~~(below gate)~~
+  - `delivered` 0.061 (term match)
+  - `aov` 0.044 ~~(below gate)~~
+- **H05** (hard) How many customers placed their second delivered order within 30 days of their first delivered order?
+  - `active_customer` 0.509
+  - `delivered` 0.122 (term match)
+  - `repeat_rate` 0.032 ~~(below gate)~~
+- **H09** (hard) Among sellers with at least 50 delivered orders, how many have a late-delivery rate more than double the overall late-delivery rate of delivered orders?
+  - `late_rate` 0.277
+  - `late` 0.073 (term match)
+  - `repeat_rate` 0.050 ~~(below gate)~~
+- **H10** (hard) What percentage of the total item price of delivered orders comes from the top 10% of customers by spend?
+  - `revenue` 0.054 ~~(below gate)~~
+  - `active_customer` 0.011 ~~(below gate)~~
+  - `freight_revenue` 0.010 ~~(below gate)~~
+- **H11** (hard) Which customer state had the largest increase in number of orders from January-June 2017 to January-June 2018, and how big was the increase?
+  - `window` 0.018 ~~(below gate)~~
+  - `active_customer` 0.003 ~~(below gate)~~
+  - `repeat_rate` 0.001 ~~(below gate)~~
+- **H17** (hard) How many customers have bought items from at least 3 different product categories?
+  - `repeat_rate` 0.002 ~~(below gate)~~
+  - `window` 0.001 ~~(below gate)~~
+  - `active_customer` 0.001 ~~(below gate)~~
+- **H18** (hard) How many new customers did we get each month in 2017, where a customer is new in the month of their first delivered order? Show the month as YYYY-MM and the count, in month order.
+  - `active_customer` 0.865 (term match)
+  - `delivered` 0.068 (term match)
+  - `repeat_customer` 0.010 ~~(below gate)~~
+- **H22** (hard) What percentage of all orders was placed on each day of the week (0 = Sunday to 6 = Saturday)?
+  - `order` 0.025 (term match)
+  - `revenue` 0.006 ~~(below gate)~~
+  - `freight_revenue` 0.005 ~~(below gate)~~
+- **H25** (hard) How many customers have exactly 1, 2, 3, and 4 or more delivered orders? Label the last group '4+'.
+  - `repeat_customer` 0.444
+  - `active_customer` 0.118
+  - `delivered` 0.065 (term match)
+- **H26** (hard) For each month of 2017, show the number of orders and the 3-month moving average (that month and the two before it within 2017), in month order. Use YYYY-MM for the month.
+  - `active_customer` 0.337 (term match)
+  - `window` 0.069 ~~(below gate)~~
+  - `aov` 0.010 ~~(below gate)~~
+- **H30** (hard) Between January 2017 and August 2018, which month (YYYY-MM) had the biggest drop in number of orders compared with the month before, and how large was the drop?
+  - `window` 0.268
+  - `order` 0.002 (term match)
+  - `active_customer` 0.000 (term match)
+- **H34** (hard) Within each customer region, what percentage of the region's orders uses each main payment type? Ignore orders with no payment type. Show region, payment type and percentage.
+  - `revenue` 0.002 ~~(below gate)~~
+  - `repeat_rate` 0.002 ~~(below gate)~~
+  - `repeat_customer` 0.001 ~~(below gate)~~
+- **D02** (definition) What is our repeat rate, as a percentage?
+  - `repeat_rate` 0.111 (term match)
+  - `review` 0.002 ~~(below gate)~~
+  - `aov` 0.001 ~~(below gate)~~
+- **D09** (definition) How much revenue did each customer region bring in?
+  - `revenue` 0.001 (term match)
+  - `aov` 0.001 ~~(below gate)~~
+  - `revenue_per_resident` 0.001 ~~(below gate)~~
+- **D10** (definition) What is the late rate in each customer region, as a percentage?
+  - `late_rate` 0.058 (term match)
+  - `repeat_rate` 0.002 ~~(below gate)~~
+  - `revenue` 0.001 ~~(below gate)~~
+- **D14** (definition) What is the average order value for each main payment type?
+  - `aov` 0.087 (term match)
+  - `revenue` 0.011 ~~(below gate)~~
+  - `order` 0.004 (term match)
+- **D15** (definition) What share of revenue, as a percentage, came from late deliveries?
+  - `late_rate` 0.083 ~~(below gate)~~
+  - `revenue` 0.035 (term match)
+  - `aov` 0.021 ~~(below gate)~~

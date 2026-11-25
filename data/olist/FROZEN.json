@@ -1,0 +1,10 @@
+{
+  "frozen_on": "2026-11-24",
+  "rule": "The test file is not used for any prompt, threshold or training decision. Only final evaluations read it.",
+  "split_seed": 20261124,
+  "marts_combined_sha256": "6bf3e459a5f55ec090f79c80ac3b403aaef512ff78088c2cdf8565c914c6b75f",
+  "files": {
+    "questions_dev.json": "889f73e5f28a88a1f1fe2d5f294969014d200c3c82a4240fb3fb1ffc35a4c4a8",
+    "questions_test.json": "a8d90c44a003dea808ad610ea50992ab7dcbe508c19dfb667bbc38384854a983"
+  }
+}
